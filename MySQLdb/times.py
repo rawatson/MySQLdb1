@@ -70,10 +70,11 @@ def TimeDelta_or_None(s):
             ms = ms.ljust(6, '0')
         else:
             ms = 0
+        is_negative = h[0] == '-'
         h, m, s, ms = int(h), int(m), int(s), int(ms)
         td = timedelta(hours=abs(h), minutes=m, seconds=s,
                        microseconds=ms)
-        if h < 0:
+        if is_negative:
             return -td
         else:
             return td
